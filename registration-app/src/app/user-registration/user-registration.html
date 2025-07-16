@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="form-section">
+    <!-- Your user registration form here -->
+         <label for="Enter Details">
+        <strong> Enter User Details</strong></label>
+<form action="User-Registration" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" placeholder="Enter name" 
+        name="name" 
+        id="name"
+        formControlName="name" />
+    </div>
+    <div>
+        <label for="email">Email: </label>
+        <input type="text" placeholder="Enter email" 
+        name="email" 
+        id="email"
+        formControlName="email" />
+    </div>
+    <div formGroupName="address">
+        <label for="street">Street</label>
+        <input type="text" placeholder="Enter street" 
+        name="street" 
+        id="street"
+        formControlName="street" />
+        <label for="city">City</label>
+        <input type="text" placeholder="Enter city" 
+        name="city" 
+        id="city"
+        formControlName="city" />
+    </div>
+    <div formArrayName="phoneNumbers">
+        <!-- Loop through phone numbers -->
+        <div *ngFor="let pctrl of phoneNumbers.controls; let i = index">
+            <label for="phoneNumbers">Phone Number:</label>
+            <input type="text" name="phoneNumber" id="phoneNumber"
+            [formControlName]="i" />
+            <!-- Remove any phone number -->
+            <button type="button" (click)="removePhone(i)" class="icon-button" [disabled]="phoneNumbers.length === 1">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+        <div>
+            <button type="button" (click)="addPhone()" class="icon-button">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+    </div>
+    <div>
+        <button type="submit" [disabled]="registerForm.valid" class="sbutton">Register</button>
+    </div>
+</form>
+
+  </div>
+  <div class="details-section">
+    <!-- Submitted user details will be shown here -->
+     <h3>Submitted Details:</h3>
+    <p><strong>Name:</strong> {{ submittedData.name | uppercase}}</p>
+    <p><strong>Email:</strong> {{ submittedData.email }}</p>
+    <h4>Address (Street, City)</h4>
+    <p><strong>Street:</strong> {{ submittedData.address?.street | uppercase }}</p>
+    <p><strong>City:</strong> {{ submittedData.address?.city | uppercase}}</p>
+    <p><strong>Phone:</strong> {{ submittedData.phoneNumbers }}</p>
+
+  </div>
+</div>
