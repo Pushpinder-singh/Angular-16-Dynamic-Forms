@@ -37,12 +37,13 @@
             <input type="text" name="phoneNumber" id="phoneNumber"
             [formControlName]="i" />
             <!-- Remove any phone number -->
-            <button type="button" (click)="removePhone(i)" class="icon-button" [disabled]="phoneNumbers.length === 1">
+             <!-- adding condition to disable if only one phone number field exist -->
+            <button type="button" (click)="removePhone(i)" [disabled]="phoneNumbers.length === 1">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
         <div>
-            <button type="button" (click)="addPhone()" class="icon-button">
+            <button type="button" (click)="addPhone()">
                 <i class="fas fa-plus"></i>
             </button>
         </div>

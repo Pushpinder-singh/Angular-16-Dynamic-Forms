@@ -31,7 +31,9 @@ export class UserRegistration {
     });
   }
 
+  // pattern validations for email
   //Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+  // pattern validation for phone
   //Validators.pattern(/^[0-9]{10}$/)
 
   get phoneNumbers(){
