@@ -2,7 +2,7 @@
   <div class="form-section">
     <!-- Your user registration form here -->
          <label for="Enter Details">
-        <strong> Enter User Details</strong></label>
+        <strong> Enter User Details</strong></label><hr>
 <form action="User-Registration" [formGroup]="registerForm" (ngSubmit)="submitForm()">
     <div>
         <label for="name">Name: </label>
@@ -37,26 +37,22 @@
             <input type="text" name="phoneNumber" id="phoneNumber"
             [formControlName]="i" />
             <!-- Remove any phone number -->
-             <!-- adding condition to disable if only one phone number field exist -->
-            <button type="button" (click)="removePhone(i)" [disabled]="phoneNumbers.length === 1">
+            <button type="button" (click)="removePhone(i)" class="icon-button" [disabled]="phoneNumbers.length === 1">
                 <i class="fas fa-trash"></i>
             </button>
-        </div>
-        <div>
-            <button type="button" (click)="addPhone()">
+            <button type="button" (click)="addPhone()" class="icon-button">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
-
     </div>
     <div>
-        <button type="submit" [disabled]="registerForm.valid" class="sbutton">Register</button>
+        <button type="submit" [disabled]="registerForm.valid" class="sbutton">{{isEdit ? "Edit User" : "Add User"}}</button>
     </div>
 </form>
 
+
   </div>
-  <div class="details-section">
-    <!-- Submitted user details will be shown here -->
+  <!-- <div class="details-section">
      <h3>Submitted Details:</h3>
     <p><strong>Name:</strong> {{ submittedData.name | uppercase}}</p>
     <p><strong>Email:</strong> {{ submittedData.email }}</p>
@@ -65,5 +61,5 @@
     <p><strong>City:</strong> {{ submittedData.address?.city | uppercase}}</p>
     <p><strong>Phone:</strong> {{ submittedData.phoneNumbers }}</p>
 
-  </div>
+  </div> -->
 </div>
