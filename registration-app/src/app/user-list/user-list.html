@@ -1,0 +1,14 @@
+<div>
+    <h2>Registers User's</h2>
+    <div *ngFor="let user of users; let i=index">
+        <hr><span>
+        <p><strong>User Id :</strong> {{ user.id}}</p>
+        <p><strong>Full Name:</strong> {{ user.name | uppercase}}</p>
+        <p><strong>E-mail:</strong> {{ user.email }}</p>
+        <p><strong>Address:</strong> {{ user.address?.street | uppercase }} {{ user.address?.city | uppercase}}</p>
+        <p><strong>Phone:</strong> {{ user.phoneNumbers}}</p>
+        <button type="button" (click)="onEdit(user)">Edit</button>
+        <button type="button" (click)="onDelete(user.id)">Delete</button>
+        </span><hr>
+    </div>
+</div>
