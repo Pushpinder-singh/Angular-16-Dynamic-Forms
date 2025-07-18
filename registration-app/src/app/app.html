@@ -1,3 +1,10 @@
 <app-header></app-header>
-<app-user-registration></app-user-registration>
+<div class="container">
+    <div class="form-section">
+        <app-user-registration [selectedUserfromAppToEdit]="selectedUserfromAppComponentOfUserList"></app-user-registration>
+    </div>
+    <div class="details-section">
+        <app-user-list (selectedUser)="selectUserInAppComponent($event)"></app-user-list>
+    </div>
+</div>
 <router-outlet />
